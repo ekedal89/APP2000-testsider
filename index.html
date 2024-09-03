@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React To-Do List</title>
+    <!-- Inkluder Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Inkluder React og ReactDOM fra CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- Inkluder Babel for å støtte JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">To-Do List</h1>
+        <!-- Dette er hvor React-komponenten vil bli rendret -->
+        <div id="root"></div>
+    </div>
+
+    <!-- React-kode -->
+    <script type="text/babel">
+        function TodoApp() {
+            const [tasks, setTasks] = React.useState([]);
+            const [newTask, setNewTask] = React.useState("");
+
+            const handleAddTask = () => {
+                if (newTask.trim() !== "") {
+                    setTasks([...tasks, newTask.trim()]);
+                    setNewTask(""); // Tømmer input-feltet
+                }
+            };
+
+            return (
+                <div>
+                    <div className="input-group mb-3">
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            placeholder="Legg til en ny oppgave..." 
+                            value={newTask} 
+                            onChange={(e) => setNewTask(e.target.value)} 
+                        />
+                        <button 
+                            className="btn btn-primary" 
+                            onClick={handleAddTask}>
+                            Legg til
+                        </button>
+                    </div>
+                    <ul className="list-group">
+                        {tasks.map((task, index) => (
+                            <li key={index} className="list-group-item">
+                                {task}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        // Rendre TodoApp-komponenten til DOM
+        ReactDOM.render(<TodoApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
