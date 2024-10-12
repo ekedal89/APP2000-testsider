@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  height: 90vh;           
+  padding-top: 20px;     
+}
+
+/* Justerer innholdet */
+.content {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;   
+  padding: 40px;             
+  background-color: #f0f0f0; 
+  border-radius: 10px;       
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;          
+  width: 80%;               
+  max-width: 600px;          
+}
+
+.input-container {
+  display: flex;           
+  margin-bottom: 20px;    
+}
+
+input {
+  margin-right: 10px;      
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;  
+  padding: 0;            
+  margin: 0;             
+  width: 100%;            
+}
+
+li {
+  display: flex;            
+  align-items: center;      
+  margin-bottom: 10px;      
+  width: 100%;              
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;    
+}
